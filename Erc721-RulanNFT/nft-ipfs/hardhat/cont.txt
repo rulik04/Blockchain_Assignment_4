@@ -1,0 +1,24 @@
+npx hardhat run scripts/deploy.js --network mumbai
+
+Rulan Contract Address: 0xdc3A183c3A0cbfB7d0ffd1fDA5BF152AC8359a5E
+
+
+    function safeTransferFrom(address from, address to, uint256 tokenId) public virtual override(ERC721, IERC721) {
+        require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
+        _safeTransfer(from, to, tokenId, "");
+    }
+
+    function approve(address to, uint256 tokenId) public virtual override(ERC721, IERC721) {
+        address owner = ownerOf(tokenId);
+        require(to != owner, "ERC721: approval to current owner");
+        require(_msgSender() == owner || isApprovedForAll(owner, _msgSender()),
+            "ERC721: approve caller is not owner nor approved for all"
+        );
+        _approve(to, tokenId);
+    }
+
+    function setApprovalForAll(address operator, bool approved) public virtual override(ERC721, IERC721) {
+        require(operator != _msgSender(), "ERC721: approve to caller");
+        _operatorApprovals[_msgSender()][operator] = approved;
+        emit ApprovalForAll(_msgSender(), operator, approved);
+    }

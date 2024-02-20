@@ -1,0 +1,5 @@
+npx hardhat run --network goerli scripts/deploy.js 
+
+Ocean Token deployed:  0xe0A2B593D906D57F2069175BFe995d202A0781f0
+
+Rulan Token deployed:  0x460B1f4ff0D0C88388B825208Fe23fF74Be7fBB0s
