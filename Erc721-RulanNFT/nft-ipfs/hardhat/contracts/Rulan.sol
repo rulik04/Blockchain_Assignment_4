@@ -13,16 +13,12 @@ contract Rulan is ERC721Enumerable, Ownable {
         */
     string _baseTokenURI;
 
-    //  _price is the price of one Rulan NFT
     uint256 public _price = 0.01 ether;
 
-    // _paused is used to pause the contract in case of an emergency
     bool public _paused;
 
-    // max number of Rulan
     uint256 public maxTokenIds = 10;
 
-    // total number of tokenIds minted
     uint256 public tokenIds;
 
     modifier onlyWhenNotPaused {
@@ -90,9 +86,7 @@ contract Rulan is ERC721Enumerable, Ownable {
         require(sent, "Failed to send Ether");
     }
 
-        // Function to receive Ether. msg.data must be empty
     receive() external payable {}
 
-    // Fallback function is called when msg.data is not empty
     fallback() external payable {}
 }
